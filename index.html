@@ -18,10 +18,10 @@
   <br />
 <div class="container">
   <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-1 col-md-2" id="searchNav">
           <div class="row">
-            <h2>Dog search:</h2>
-            <input type=“text” id="zip" placeholder="Zip Code">
+            <h2>Dog search:</h2> <br/>
+            <input type=“text” id="zip" size="8" placeholder="Zip Code"><br/>
             <select id="distance" name="distance">
               <option value="1">1 mile</option>
               <option value="5">5 miles</option>
@@ -37,32 +37,22 @@
               <div class="savedDogs">Dog Buttons</div>
               </div>
         </div>
-        <div class="col-sm-10">
-          <div class="row"><div class="card hidden">
-            <img src="https://placehold.it/800x600" class="section media">
+        <div class="col-sm-11 col-md-10">
+          <div class="row"><div>
+            <div class="dogAPIinfo">
+            <img src="./assets/images/dogImagePlaceholder.jpg" class="section media">
             <h3 class="section double-padded">Dog API Info - HIDDEN AT START</h3>
             <p class="section double-padded">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div></div>
+            <p class="section double-padded">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="section double-padded">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div></div></div>
           <div class="row">
           <div class="card">
-            <img src="https://placehold.it/800x600" class="section media">
-            <h3 class="section double-padded">Lorem ipsum</h3>
-            <p class="section double-padded">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-          <div class="card">
-            <img src="https://placehold.it/800x600" class="section media">
-            <h3 class="section double-padded">Lorem ipsum</h3>
-            <p class="section double-padded">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-          <div class="card">
-            <img src="https://placehold.it/800x600" class="section media">
-            <h3 class="section double-padded">Lorem ipsum</h3>
-            <p class="section double-padded">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-          <div class="card">
-            <img src="https://placehold.it/800x600" class="section media">
-            <h3 class="section double-padded">Lorem ipsum</h3>
-            <p class="section double-padded">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <img src="./assets/images/dogImagePlaceholder.jpg" class="section media" id="dogImage">
+            <h3 class="section double-padded" id="dogName">Dog Name</h3>
+            <p class="section single-padded" id="dogBreed">Breed</p>
+            <p class="section single-padded" id="dogGender">Gender</p>
+            <p class="section single-padded" id="dogAge">Age</p>
           </div>
           <div class="card">
             <img src="https://placehold.it/800x600" class="section media">
@@ -95,7 +85,7 @@
   </div>
   <footer>
     <div class="col-sm col-lg-10 col-lg-offset-1">
-      <p>Copyright &copy; Your Website 2017 | Built using <a href="https://chalarangelo.github.io/mini.css/">mini.css</a>
+      <p>Copyright &copy; Your Website 2021 | Built using blood, sweat, and <a href="https://chalarangelo.github.io/mini.css/">mini.css</a>
       </p>
     </div>
   </footer>
