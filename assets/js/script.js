@@ -4,10 +4,12 @@ var theDogApiKey = "9af1f589-f293-4bba-8d9e-3ba9732efb0f";
 var breedTextBox = document.getElementById("breed")
 var zipCode = document.getElementById('zip');
 var distance = document.getElementById('distance');
+var dogImage = document.getElementsByClassName('dogImage');
 var dogName = document.getElementsByClassName('dogName');
 var dogBreed = document.getElementsByClassName('dogBreed');
 var dogGender = document.getElementsByClassName('dogGender');
 var dogAge = document.getElementsByClassName('dogAge');
+var dogUrl = document.getElementsByClassName('dogUrl');
 
 
 // Function to call the Petfinder API
@@ -63,11 +65,14 @@ function callPetFinder() {
     var dogBreedOutput = petData.animals[0].breeds.primary
     var dogGenderOutput = petData.animals[0].gender
     var dogAgeOutput = petData.animals[0].age
-    console.log(dogImageOutput)
-    console.log(dogNameOutput)
-    console.log(dogBreedOutput)
-    console.log(dogGenderOutput)
-    console.log(dogAgeOutput)
+    var dogUrlOutput = petData.animals[0].url
+
+    dogImage[0].setAttribute('src', dogImageOutput);
+    dogName[0].innerHTML = 'Name: ' + dogNameOutput;
+    dogBreed[0].innerHTML = 'Breed: ' + dogBreedOutput;
+    dogGender[0].innerHTML = 'Gender: ' + dogGenderOutput;
+    dogAge[0].innerHTML = 'Age: ' + dogAgeOutput;
+    dogUrl[0].innerHTML = dogUrlOutput;
     console.log('pets', petData);
   });
 }
