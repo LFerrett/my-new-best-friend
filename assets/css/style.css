@@ -65,6 +65,39 @@ body, html {
     font-size: 17px;
   }
   
+#searchNav {
+  background-color: lightgray;
+  border-radius: 6px;
+}
+
+#searchNav button {
+ /* background-color: rgb(78, 69, 128);
+ /* color: white; */
+  border-radius: 6px; */
+}
+
+#searchNav button:hover {
+ /* background-color: rgb(129, 115, 206); */
+ /* color: white; */
+  border-radius: 6px;
+}
+
+.dogAPIinfo {
+  display: inline-block;
+  width: 1000px;
+  border-radius: 6px;
+  background-color: paleturquoise;
+}
+
+.card {
+  border-radius: 6px;
+  transition: all .2s ease-in-out; 
+}
+
+.card:hover { 
+  transform: scale(1.05); 
+}
+
   /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
   @media screen and (max-width: 600px) {
     .topnav a, .topnav input[type=text] {
