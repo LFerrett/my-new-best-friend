@@ -58,18 +58,21 @@ function callPetFinder() {
 }
 
 function getBreedInfo(){
-  var Url = "https://api.thedogapi.com/v1/breeds/search?q=goldendoodle"
+  var Url = "https://api.thedogapi.com/v1/breeds/search?q=golden"
     fetch(Url, {
       headers:{
         "x-api-key": theDogApiKey
       }
     }).then(function(response){
-      // console.log(response.json());
+    //   console.log(response.json());
       return response.json()
-    }).then(function(data){
-      console.log(data)
+    }).then(function(dataJson){
+      console.log(dataJson)
       var dogInfoEl = document.getElementById("dogInfo")
+      var temperamentEl = document.getElementById("temperament")
+      var breedGroupEl = document.getElementById("breedGroup")
+      var lifeSpanEl = document.getElementById("lifeSpan")
       
     });
 }
-// getBreedInfo()
+getBreedInfo()
