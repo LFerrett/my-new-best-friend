@@ -58,8 +58,16 @@ function callPetFinder() {
   }).then(function (petData) {
 
     // Log the pet data
+    var dogImageOutput = petData.animals[0].primary_photo_cropped.full
     var dogNameOutput = petData.animals[0].name
+    var dogBreedOutput = petData.animals[0].breeds.primary
+    var dogGenderOutput = petData.animals[0].gender
+    var dogAgeOutput = petData.animals[0].age
+    console.log(dogImageOutput)
     console.log(dogNameOutput)
+    console.log(dogBreedOutput)
+    console.log(dogGenderOutput)
+    console.log(dogAgeOutput)
     console.log('pets', petData);
   });
 }
