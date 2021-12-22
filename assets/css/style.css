@@ -73,7 +73,7 @@ body, html {
 #searchNav button {
  /* background-color: rgb(78, 69, 128);
  /* color: white; */
-  border-radius: 6px; */
+  border-radius: 6px; 
 }
 
 #searchNav button:hover {
