@@ -8,6 +8,20 @@ var distance = document.getElementById('distance');
 // Function to call the Petfinder API
 function callPetFinder() {
 
+  // Sets default zip code to Philadelphia if nothing is input
+  var zipCodeValue = zipCode.value;
+  if (zipCodeValue == "") {
+    zipCodeValue = 19106;
+  }
+
+  // Sets distance to 100 miles if the any distance option is selected
+  var distanceValue = distance.options[distance.selectedIndex].value;
+  if (distanceValue == "any") {
+    distanceValue = 100;
+  } else (
+    distanceValue = parseInt(distance.options[distance.selectedIndex].value)
+  )
+
   // Fetch code referenced from https://gomakethings.com/using-oauth-with-fetch-in-vanilla-js/
   // Fetch to retrieve the Petfinder authorization tokens
   fetch('https://api.petfinder.com/v2/oauth2/token', {
@@ -24,7 +38,7 @@ function callPetFinder() {
   }).then(function (tokenData) {
 
     // Uses the returned authorization tokens to fetch Petfinder's API
-    return fetch('https://api.petfinder.com/v2/animals?type=dog&location=' + zipCode + '&distance=' + distance, {
+    return fetch('https://api.petfinder.com/v2/animals?type=dog&location=' + zipCodeValue + '&distance=' + distanceValue, {
       headers: {
         'Authorization': tokenData.token_type + ' ' + tokenData.access_token,
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -56,4 +70,4 @@ function getBreedInfo(){
       console.log(data)
     });
 }
-getBreedInfo()
+// getBreedInfo()
