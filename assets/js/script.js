@@ -4,6 +4,11 @@ var theDogApiKey = "9af1f589-f293-4bba-8d9e-3ba9732efb0f";
 var breedTextBox = document.getElementById("breed")
 var zipCode = document.getElementById('zip');
 var distance = document.getElementById('distance');
+var dogName = document.getElementsByClassName('dogName');
+var dogBreed = document.getElementsByClassName('dogBreed');
+var dogGender = document.getElementsByClassName('dogGender');
+var dogAge = document.getElementsByClassName('dogAge');
+
 
 // Function to call the Petfinder API
 function callPetFinder() {
@@ -53,6 +58,8 @@ function callPetFinder() {
   }).then(function (petData) {
 
     // Log the pet data
+    var dogNameOutput = petData.animals[0].name
+    console.log(dogNameOutput)
     console.log('pets', petData);
   });
 }
@@ -72,7 +79,7 @@ function getBreedInfo(){
       var temperamentEl = document.getElementById("temperament")
       var breedGroupEl = document.getElementById("breedGroup")
       var lifeSpanEl = document.getElementById("lifeSpan")
-      
+
     });
 }
 getBreedInfo()
