@@ -13,24 +13,52 @@
     <div class=“hero-text”>
       <h1>My New Best Friend</h1>
       <p>A simple app to aid in your search for your new best friend. <br>Search for available dogs by breed and location to see info about that breed and avilable dogs.</p>
-      
-      
-    </div>
+       </div>
   </div>
   <br />
 <div class="container">
   <div class="row">
         <div class="col-sm-2">
           <div class="row">
+            <h2>Dog search:</h2>
             <input type=“text” id="zip" placeholder="Zip Code">
-            <input type=“text” id="distance" placeholder="Distance">
+            <select id="distance" name="distance">
+              <option value="1-mile">1 mile</option>
+              <option value="5-miles">5 miles</option>
+              <option value="10-miles">10 miles</option>
+              <option value="25-miles">25 miles</option>
+              <option value="any-miles">Any</option>
+            </select>
             <button>“Retrieve” my friend</button>
             </div>
             <div class="row">
               <h3>Local Storage</h3>
+              <br/>
+              <div class="savedDogs">Dog Buttons</div>
               </div>
         </div>
         <div class="col-sm-10">
+          <div class="row"><div class="card hidden">
+            <img src="https://placehold.it/800x600" class="section media">
+            <h3 class="section double-padded">Dog API Info - HIDDEN AT START</h3>
+            <p class="section double-padded">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div></div>
+          <div class="row">
+          <div class="card">
+            <img src="https://placehold.it/800x600" class="section media">
+            <h3 class="section double-padded">Lorem ipsum</h3>
+            <p class="section double-padded">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+          <div class="card">
+            <img src="https://placehold.it/800x600" class="section media">
+            <h3 class="section double-padded">Lorem ipsum</h3>
+            <p class="section double-padded">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+          <div class="card">
+            <img src="https://placehold.it/800x600" class="section media">
+            <h3 class="section double-padded">Lorem ipsum</h3>
+            <p class="section double-padded">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
           <div class="card">
             <img src="https://placehold.it/800x600" class="section media">
             <h3 class="section double-padded">Lorem ipsum</h3>
