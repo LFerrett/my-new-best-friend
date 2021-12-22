@@ -44,7 +44,7 @@ function callPetFinder() {
 }
 
 function getBreedInfo(){
-  var Url = "https://api.thedogapi.com/v1/images/search"
+  var Url = "https://api.thedogapi.com/v1/breeds/search?q=goldendoodle"
     fetch(Url, {
       headers:{
         "x-api-key": theDogApiKey
@@ -54,6 +54,8 @@ function getBreedInfo(){
       return response.json()
     }).then(function(data){
       console.log(data)
+      var dogInfoEl = document.getElementById("dogInfo")
+      
     });
 }
 getBreedInfo()
