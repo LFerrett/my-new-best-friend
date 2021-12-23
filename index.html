@@ -19,9 +19,9 @@
         <div class="hero-text">
           <h1>My New Best Friend</h1>
           <p>
-            A simple app to aid in your search for your new best friend.
-            <br />Search for available dogs by breed and location to see info
-            about that breed and available dogs.
+            A simple app to fetch your new best friend
+            <br>Search available breeds by location
+            <br>Click friend's image for more info on breed
           </p>
         </div>
       </div>
@@ -43,21 +43,22 @@
             <button onclick="callPetFinder()">“Retrieve” friend</button>
             </div>
             <div class="row">
-              <h3>Local Storage</h3>
+              <h3>Saved Dogs</h3>
               <br/>
-              <div class="savedDogs">Dog Buttons</div>
+              <div class="savedDogs"></div>
               </div>
         </div>
         <div class="col-sm-10">
-          <div class="row"><div>
+          <div class="row savedToStorage"><div>
             <div class="dogAPIinfo">
-              <table>
+              <table class="aboutDog">
                 <tr>
                 <td><img src="./assets/images/dogImagePlaceholder.jpg" class="section media" id="selectedImage"><figcaption id="selectedName">DOG NAME</figcaption></td>
-                <td><h3 class="section double-padded" id="selectedBreed">Yorkshire Terrier</h3></td>
-                <td><h3 class="section double-padded" id="selectedTraits">Traits: Bold, Independent, Confident, Intelligent, Courageous</h3></td>
-                <td><h3 class="section double-padded" id="selectedLifespan">Life Span: 12 - 16 years average</h3></td>
-                <td><h3 class="section double-padded"><a href="#" id="selectedURL">Click to get adoption info!</a></h3></td>
+                <td><h4 id="selectedBreed">Yorkshire Terrier</h4></td>
+                <td><h4 id="selectedTraits">Traits: Bold, Independent, Confident, Intelligent, Courageous</h4></td>
+                <td><h4 id="selectedLifespan">Life Span: 12 - 16 years average</h4></td>
+                <td><h4 ><a href="#" id="selectedURL">Click to get adoption info!</a></h4></td>
+                <td><button>Save dog <span class="icon-bookmark"></span></button></td>
               </tr>
               </table>
           </div></div></div>
