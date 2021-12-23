@@ -4,6 +4,7 @@ var theDogApiKey = "9af1f589-f293-4bba-8d9e-3ba9732efb0f";
 var breedTextBox = document.getElementById("breed")
 var zipCode = document.getElementById('zip');
 var distance = document.getElementById('distance');
+var savedDogs = document.getElementById('savedDogs');
 var selectedImage = document.getElementById('selectedImage');
 var selectedName = document.getElementById('selectedName');
 var selectedBreed = document.getElementById('selectedBreed');
@@ -18,6 +19,7 @@ var dogAge = document.getElementsByClassName('dogAge');
 var dogUrl = document.getElementsByClassName('dogUrl');
 var dogListing = document.getElementById('dogListing');
 var dogCard = document.getElementsByClassName('dogCard');
+var aboutDog = document.getElementById('aboutDog');
 var saveBtn = document.getElementById('saveBtn');
 
 // Function to call the Petfinder API
@@ -130,12 +132,13 @@ function getBreedInfo(currentBreed, dogCardValues){
       return response.json()
     }).then(function(dataJson){
       console.log(dataJson)
+      console.log(currentBreed)
 
       // Get image, name, and breed from selected card
-      var imageEl = dogCardValues.children[0].textContent;
+      var imageEl = dogCardValues.children[0].src;
       var nameEl = dogCardValues.children[1].textContent;
       var breedEl = dogCardValues.children[2].textContent;
-      if(currentBreed == "Mixed+Breed") {
+      if(currentBreed == "Mixed Breed") {
         var temperamentEl = 'No temperament information available';
         var lifeSpanEl = 'No life span information available';
       } else {
@@ -148,7 +151,7 @@ function getBreedInfo(currentBreed, dogCardValues){
     //   urlEl = urlEl.replace('"', '');
       console.log(urlEl)
       selectedImage.src = imageEl;
-      selectedName.innerHTML = nameEl;
+      selectedName.innerHTML = nameEl.replace ('Name: ', '');
       selectedBreed.innerHTML = 'Breed: ' + breedEl;
       selectedTraits.innerHTML = 'Traits: ' + temperamentEl;
       selectedLifespan.innerHTML = 'Typical Life Span: ' + lifeSpanEl;
@@ -169,4 +172,22 @@ var individualCardClick = function(event) {
 
 function saveLocalStorage() {
   var savedDogBtnEl = document.createElement('button');
+  var aboutDogContents = aboutDog.innerHTML;
+  var selectedNameValue = selectedName.innerHTML;
+  var checkDog = document.getElementById(selectedNameValue);
+
+  savedDogs.prepend(savedDogBtnEl);
+  savedDogs.firstChild.innerHTML = selectedNameValue;
+  savedDogs.firstChild.id = selectedNameValue;
+  savedDogs.firstChild.setAttribute('onClick', 'reply_click(this.id)')
+
+
+  localStorage.setItem(selectedNameValue, aboutDogContents);
+  localStorage.setItem('savedDogs', savedDogs.innerHTML);
+}
+
+function reply_click(clicked_id){
+  var recallId = document.getElementById(clicked_id);
+  var savedDogValue = recallId.innerHTML;
+  aboutDog.innerHTML =  localStorage.getItem(savedDogValue);
 }
