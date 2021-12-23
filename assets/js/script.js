@@ -18,6 +18,7 @@ var dogAge = document.getElementsByClassName('dogAge');
 var dogUrl = document.getElementsByClassName('dogUrl');
 var dogListing = document.getElementById('dogListing');
 var dogCard = document.getElementsByClassName('dogCard');
+var saveBtn = document.getElementById('saveBtn');
 
 // Function to call the Petfinder API
 function callPetFinder() {
@@ -165,3 +166,6 @@ var individualCardClick = function(event) {
   getBreedInfo(currentBreed, dogCardValues)
 };
 
+function saveLocalStorage() {
+  var savedDogBtnEl = document.createElement('button');
+}
