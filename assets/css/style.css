@@ -4,7 +4,7 @@ html {
   background-color: #c7b6a3;
 }
 h1 {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 80px;
   text-shadow: 2px 2px rgb(78, 77, 77);
 }
@@ -94,7 +94,6 @@ p {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-
 }
 
 .searchEl button:hover {
@@ -108,38 +107,38 @@ p {
     padding: 0 25px;
   }
 
-.dogAPIinfo {
-  display: inline-block;
-  width: 90%;
-  border-radius: 6px;
-  background-color: lightgray;
-  padding-top: 10px;
-}
+  .dogAPIinfo {
+    display: inline-block;
+    width: 90%;
+    border-radius: 6px;
+    background-color: lightgray;
+    padding-top: 10px;
+  }
 
-.dogAPIinfo img {
-  padding: 5px;
-}
+  .dogAPIinfo img {
+    padding: 5px;
+  }
 
-figcaption {
-  text-align: center;
-}
+  figcaption {
+    text-align: center;
+  }
 
-.card {
-  border-radius: 6px;
-  border-color: #422800;
-  transition: all 0.2s ease-in-out;
-}
+  .card {
+    border-radius: 6px;
+    border-color: #422800;
+    transition: all 0.2s ease-in-out;
+  }
 
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 2px 2px 10px grey;
-}
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 2px 2px 10px grey;
+  }
 
-footer {
-  background-color: #c7b6a3;
-  text-align: center;
+  footer {
+    background-color: #c7b6a3;
+    text-align: center;
+  } 
 }
-
 @media screen and (max-width: 600px) {
   .topnav a,
   .topnav input[type="text"] {
@@ -152,5 +151,14 @@ footer {
   }
   .topnav input[type="text"] {
     border: 1px solid #ccc;
+  }
+  h1 {
+    font-size: 36px;
+  }
+  p {
+    font-size: 18px;
+  } 
+  .hero-text {
+   margin-top: 0px; 
   }
 }
