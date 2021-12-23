@@ -160,7 +160,7 @@ function getBreedInfo(currentBreed, dogCardValues){
 }
 
 
-// Test event listener and function for getting specific card info
+// Event listener and function for getting specific card info into the getBreedInfo function
 var individualCardClick = function(event) {
   var dogCardValues = event.currentTarget;
   console.log(dogCardValues.children[2].textContent);
@@ -170,28 +170,37 @@ var individualCardClick = function(event) {
   getBreedInfo(currentBreed, dogCardValues)
 };
 
+// Function to save dogs to to local storage
 function saveLocalStorage() {
   var savedDogBtnEl = document.createElement('button');
   var aboutDogContents = aboutDog.innerHTML;
   var selectedNameValue = selectedName.innerHTML;
   var dogCheck = document.getElementById(selectedNameValue);
 
+  // Checks if a dog was previously saved
   if (dogCheck == null) {
 
+    // If the dog was not previously saved
+    // If there are less than 10 dogs in the list, adds the new dog
     if (savedDogs.children.length < 10) {
-      savedDogs.prepend(savedDogBtnEl);
-      savedDogs.firstChild.innerHTML = selectedNameValue;
-      savedDogs.firstChild.id = selectedNameValue;
-      savedDogs.firstChild.setAttribute('onClick', 'reply_click(this.id)')
-    } else {
-      savedDogs.removeChild(savedDogs.lastChild);
       savedDogs.prepend(savedDogBtnEl);
       savedDogs.firstChild.innerHTML = selectedNameValue;
       savedDogs.firstChild.id = selectedNameValue;
       savedDogs.firstChild.setAttribute('onClick', 'reply_click(this.id)')
     }
 
-  } else {
+    // If there are more than 10 dogs in the list, removes the last dog and adds the new dog
+    else {
+      savedDogs.removeChild(savedDogs.lastChild);
+      savedDogs.prepend(savedDogBtnEl);
+      savedDogs.firstChild.innerHTML = selectedNameValue;
+      savedDogs.firstChild.id = selectedNameValue;
+      savedDogs.firstChild.setAttribute('onClick', 'reply_click(this.id)')
+    }
+  }
+
+  // If the dog was previously saved, moves the existing button to the top of the list
+  else {
     dogCheck.remove();
     savedDogs.prepend(savedDogBtnEl);
     savedDogs.firstChild.innerHTML = selectedNameValue;
@@ -199,10 +208,12 @@ function saveLocalStorage() {
     savedDogs.firstChild.setAttribute('onClick', 'reply_click(this.id)')
   }
 
+  // Sets local storage for the dog information saved and the saved dogs list
   localStorage.setItem(selectedNameValue, aboutDogContents);
   localStorage.setItem('savedDogs', savedDogs.innerHTML);
 }
 
+// Function to recall the dog information on click of any saved dogs
 function reply_click(clicked_id){
   var recallId = document.getElementById(clicked_id);
   var savedDogValue = recallId.innerHTML;
