@@ -133,7 +133,7 @@ function getBreedInfo(){
       // selectedName.innerHTML = nameEl;
       // selectedBreed.innerHTML = 'Breed: ' + breedEl;
       selectedTraits.innerHTML = 'Traits: ' + temperamentEl;
-      selectedLifespan.innerHTML = 'Typical Life SpanL ' + lifeSpanEl;
+      selectedLifespan.innerHTML = 'Typical Life Span: ' + lifeSpanEl;
       // selectedURL.href = urlEl;
     });
 }
