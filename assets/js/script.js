@@ -137,4 +137,14 @@ function getBreedInfo(){
       // selectedURL.href = urlEl;
     });
 }
-getBreedInfo()
+
+
+// Test event listener and function for getting specific card info
+var individualCardClick = function() {
+  var dogCardValues = this.innerHTML;
+  console.log(dogCardValues);
+};
+
+for (var i = 0; i < dogCard.length; i++) {
+  dogCard[i].addEventListener('click', individualCardClick, false);
+}
