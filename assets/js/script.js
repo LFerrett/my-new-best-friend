@@ -22,6 +22,8 @@ var dogCard = document.getElementsByClassName('dogCard');
 // Function to call the Petfinder API
 function callPetFinder() {
 
+  dogListing.innerHTML = "";
+
   // Sets default zip code to Philadelphia if nothing is input
   var zipCodeValue = zipCode.value;
   if (zipCodeValue == "") {
@@ -71,7 +73,7 @@ function callPetFinder() {
       var newDogCard = document.createElement('article');
       var newCardImg = document.createElement('img');
       var newNameEl = document.createElement('h3');
-      var dogImageOutput = petData.animals[i].primary_photo_cropped.full;
+      var dogImageOutput = petData.animals[i].primary_photo_cropped;
       var dogNameOutput = petData.animals[i].name;
       var dogBreedOutput = petData.animals[i].breeds.primary;
       var dogGenderOutput = petData.animals[i].gender;
@@ -84,7 +86,14 @@ function callPetFinder() {
       dogListing.children[i].addEventListener('click', individualCardClick);
       dogCard[i].appendChild(newCardImg);
       dogCard[i].children[0].setAttribute('class', 'section media dogImage');
-      dogImage[i].src = dogImageOutput;
+
+      if (dogImageOutput == null) {
+        dogImage[i].src = '';
+        dogImage[i].alt = 'Photo unavailable';
+      } else {
+        dogImage[i].src = dogImageOutput.full;
+      }
+
       dogCard[i].appendChild(newNameEl);
       dogCard[i].children[1].setAttribute('class', 'section double-padded dogName');
       dogName[i].innerHTML = 'Name: ' + dogNameOutput;
