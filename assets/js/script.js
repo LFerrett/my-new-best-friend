@@ -97,6 +97,15 @@ function callPetFinder() {
       var newPEl = document.createElement('p');
       dogCard[0].appendChild(newPEl);
     }
+
+    dogCard[0].children[2].setAttribute('class', 'section single-padded dogBreed')
+    dogBreed[0].innerHTML = 'Breed: ' + dogBreedOutput;
+    dogCard[0].children[3].setAttribute('class', 'section single-padded dogGender')
+    dogGender[0].innerHTML = 'Gender: ' + dogGenderOutput;
+    dogCard[0].children[4].setAttribute('class', 'section single-padded dogAge')
+    dogAge[0].innerHTML = 'Age: ' + dogAgeOutput;
+    dogCard[0].children[5].setAttribute('class', 'section single-padded dogUrl hidden')
+    dogUrl[0].innerHTML = dogUrlOutput;
   });
 }
 
