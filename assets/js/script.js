@@ -60,52 +60,44 @@ function callPetFinder() {
 
   }).then(function (petData) {
 
-    // Log the pet data
-    // Replace [0] with [i] once testing is done
-    var dogImageOutput = petData.animals[0].primary_photo_cropped.full
-    console.log(dogImageOutput)
-    var dogNameOutput = petData.animals[0].name
-    var dogBreedOutput = petData.animals[0].breeds.primary
-    var dogGenderOutput = petData.animals[0].gender
-    var dogAgeOutput = petData.animals[0].age
-    var dogUrlOutput = petData.animals[0].url
+    // For loop creates a new dog card for each dog (1 page is up to 20 dogs)
+    for (var i = 0; i < petData.animals.length; i++) {
+      var newDogCard = document.createElement('article');
+      var newCardImg = document.createElement('img');
+      var newNameEl = document.createElement('h3');
+      var dogImageOutput = petData.animals[i].primary_photo_cropped.full;
+      var dogNameOutput = petData.animals[i].name;
+      var dogBreedOutput = petData.animals[i].breeds.primary;
+      var dogGenderOutput = petData.animals[i].gender;
+      var dogAgeOutput = petData.animals[i].age;
+      var dogUrlOutput = petData.animals[i].url;
 
-    // dogImage[0].setAttribute('src', dogImageOutput);
-    // dogName[0].innerHTML = 'Name: ' + dogNameOutput;
-    // dogBreed[0].innerHTML = 'Breed: ' + dogBreedOutput;
-    // dogGender[0].innerHTML = 'Gender: ' + dogGenderOutput;
-    // dogAge[0].innerHTML = 'Age: ' + dogAgeOutput;
-    // dogUrl[0].innerHTML = dogUrlOutput;
-    // console.log('pets', petData);
+      // Adds new elements, classes, and values for dog card container, image, and name
+      dogListing.appendChild(newDogCard);
+      dogListing.children[i].setAttribute('class', 'card dogCard');
+      dogCard[i].appendChild(newCardImg);
+      dogCard[i].children[0].setAttribute('class', 'section media dogImage');
+      dogImage[i].src = dogImageOutput;
+      dogCard[i].appendChild(newNameEl);
+      dogCard[i].children[1].setAttribute('class', 'section double-padded dogName');
+      dogName[i].innerHTML = 'Name: ' + dogNameOutput;
 
-    // Test code for creation of new dog card in order from top to bottom
-    // After running test, organize code and create for loop, replace [0] with [i], do not replace bracket number for children except for the dogListing children
-    var newDogCard = document.createElement('article');
-    dogListing.appendChild(newDogCard);
-    dogListing.children[0].setAttribute('class', 'card dogCard');
-    var newCardImg = document.createElement('img');
-    dogCard[0].appendChild(newCardImg);
-    dogCard[0].children[0].setAttribute('class', 'section media dogImage');
-    dogImage[0].src = dogImageOutput;
-    var newNameEl = document.createElement('h3');
-    dogCard[0].appendChild(newNameEl);
-    dogCard[0].children[1].setAttribute('class', 'section double-padded dogName');
-    dogName[0].innerHTML = 'Name: ' + dogNameOutput;
+      // Adds 4 new p elements
+      for (var j = 0; j < 4; j++) {
+        var newPEl = document.createElement('p');
+        dogCard[i].appendChild(newPEl);
+      }
 
-    // For loop for creating the 4 p elements, to be kept inside the general dog card for loop
-    for (var j = 0; j < 4; j++) {
-      var newPEl = document.createElement('p');
-      dogCard[0].appendChild(newPEl);
+      // Sets class and value for the p tags
+      dogCard[i].children[2].setAttribute('class', 'section single-padded dogBreed')
+      dogBreed[i].innerHTML = 'Breed: ' + dogBreedOutput;
+      dogCard[i].children[3].setAttribute('class', 'section single-padded dogGender')
+      dogGender[i].innerHTML = 'Gender: ' + dogGenderOutput;
+      dogCard[i].children[4].setAttribute('class', 'section single-padded dogAge')
+      dogAge[i].innerHTML = 'Age: ' + dogAgeOutput;
+      dogCard[i].children[5].setAttribute('class', 'section single-padded dogUrl hidden')
+      dogUrl[i].innerHTML = dogUrlOutput;
     }
-
-    dogCard[0].children[2].setAttribute('class', 'section single-padded dogBreed')
-    dogBreed[0].innerHTML = 'Breed: ' + dogBreedOutput;
-    dogCard[0].children[3].setAttribute('class', 'section single-padded dogGender')
-    dogGender[0].innerHTML = 'Gender: ' + dogGenderOutput;
-    dogCard[0].children[4].setAttribute('class', 'section single-padded dogAge')
-    dogAge[0].innerHTML = 'Age: ' + dogAgeOutput;
-    dogCard[0].children[5].setAttribute('class', 'section single-padded dogUrl hidden')
-    dogUrl[0].innerHTML = dogUrlOutput;
   });
 }
 
