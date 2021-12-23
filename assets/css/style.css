@@ -96,6 +96,16 @@ p {
   box-shadow: #422800 4px 4px 0 0;
 }
 
+.savedToStorage {
+  display: block;
+  padding: 2px;
+  align-items: center;
+}
+
+.aboutDog {
+  font-size: 12px;
+}
+
 @media (min-width: 768px) {
   .searchEl {
     min-width: 120px;
@@ -104,6 +114,7 @@ p {
 
 .dogAPIinfo {
   display: inline-block;
+  font-size: 1rem;
   width: 90%;
   border-radius: 6px;
   background-color: lightgray;
@@ -112,6 +123,24 @@ p {
 
 .dogAPIinfo img {
   padding: 5px;
+}
+
+.dogAPIinfo button {
+  background-color: #fbeee0;
+  border: 1px solid #422800;
+  border-radius: 6px;
+  box-shadow: #422800 2px 2px 0 0;
+  color: #422800;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+
+}
+
+.dogAPIinfo button:hover {
+  background-color: #fff;
+  box-shadow: #422800 4px 4px 0 0;
 }
 
 figcaption {
@@ -147,4 +176,5 @@ footer {
   .topnav input[type="text"] {
     border: 1px solid #ccc;
   }
+}
 }
