@@ -10,7 +10,8 @@ var dogBreed = document.getElementsByClassName('dogBreed');
 var dogGender = document.getElementsByClassName('dogGender');
 var dogAge = document.getElementsByClassName('dogAge');
 var dogUrl = document.getElementsByClassName('dogUrl');
-
+var dogListing = document.getElementById('dogListing');
+var dogCard = document.getElementsByClassName('dogCard');
 
 // Function to call the Petfinder API
 function callPetFinder() {
@@ -60,6 +61,7 @@ function callPetFinder() {
   }).then(function (petData) {
 
     // Log the pet data
+    // Replace [0] with [i] once testing is done
     var dogImageOutput = petData.animals[0].primary_photo_cropped.full
     var dogNameOutput = petData.animals[0].name
     var dogBreedOutput = petData.animals[0].breeds.primary
@@ -67,13 +69,29 @@ function callPetFinder() {
     var dogAgeOutput = petData.animals[0].age
     var dogUrlOutput = petData.animals[0].url
 
-    dogImage[0].setAttribute('src', dogImageOutput);
-    dogName[0].innerHTML = 'Name: ' + dogNameOutput;
+    // dogImage[0].setAttribute('src', dogImageOutput);
+    // dogName[0].innerHTML = 'Name: ' + dogNameOutput;
     dogBreed[0].innerHTML = 'Breed: ' + dogBreedOutput;
     dogGender[0].innerHTML = 'Gender: ' + dogGenderOutput;
     dogAge[0].innerHTML = 'Age: ' + dogAgeOutput;
     dogUrl[0].innerHTML = dogUrlOutput;
     console.log('pets', petData);
+
+    // Test code for creation of new dog card in order from top to bottom
+    // After running test, organize code and create for loop, replace [0] with [i]
+    var newDogCard = document.createElement('article');
+    dogListing.appendChild(newDogCard);
+    dogListing.children[0].setAttribute('class', 'card dogCard');
+    var newCardImg = document.createElement('img');
+    dogCard[0].appendChild(newCardImg);
+    dogCard[0].children['img'].setAttribute('class', 'section media dogImage');
+    dogCard[0].children['img'].setAttribute('src', dogImageOutput);
+    var newNameEl = document.createElement('h3');
+    dogCard[0].appendChild(newNameEl);
+    dogCard[0].children['h3'].setAttribute('class', 'section double-padded dogName');
+    dogName[0].innerHTML = 'Name: ' + dogNameOutput;
+
+
   });
 }
 
