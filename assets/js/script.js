@@ -131,9 +131,9 @@ function getBreedInfo(currentBreed, dogCardValues){
       console.log(dataJson)
 
       // Get image, name, and breed from selected card
-      // var imageEl = ;
-    //   var nameEl = ;
-      // var breedEl = ;
+      var imageEl = dogCardValues.children[0].textContent;
+      var nameEl = dogCardValues.children[1].textContent;
+      var breedEl = dogCardValues.children[2].textContent;
       if(currentBreed == "Mixed+Breed") {
         var temperamentEl = 'No temperament information available';
         var lifeSpanEl = 'No life span information available';
@@ -143,14 +143,15 @@ function getBreedInfo(currentBreed, dogCardValues){
       }
 
             // Get url from the hidden element from selected card
-      // var urlEl = ;
-
-      // selectedImage.src = imageEl;
-      // selectedName.innerHTML = nameEl;
-      // selectedBreed.innerHTML = 'Breed: ' + breedEl;
+      var urlEl = dogCardValues.children[5].innerHTML
+    //   urlEl = urlEl.replace('"', '');
+      console.log(urlEl)
+      selectedImage.src = imageEl;
+      selectedName.innerHTML = nameEl;
+      selectedBreed.innerHTML = 'Breed: ' + breedEl;
       selectedTraits.innerHTML = 'Traits: ' + temperamentEl;
       selectedLifespan.innerHTML = 'Typical Life Span: ' + lifeSpanEl;
-      // selectedURL.href = urlEl;
+      selectedURL.href = urlEl;
     });
 }
 
