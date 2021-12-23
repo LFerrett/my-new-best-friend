@@ -1,9 +1,10 @@
-body, html {
-    height: 100%;
+body,
+html {
+  height: 100%;
+  background-color: #c7b6a3;
 }
 h1 {
-  font-family: 'Times New Roman', Times, serif;
-
+  font-family: "Times New Roman", Times, serif;
 }
 p {
   font-family: Arial, Helvetica, sans-serif;
@@ -11,7 +12,7 @@ p {
 .hero-image {
   background-color: rgb(244, 244, 245);
   background-image: url("../images/groupPuppies.jpeg");
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   color: rgb(97, 56, 56);
   height: 50%;
   background-position: center;
@@ -33,55 +34,73 @@ p {
 }
 
 .topnav {
-    overflow: hidden;
-    background-color: #8a9c36;
-  }
-  
-  .topnav a {
-    float: left;
-    display: block;
-    color: rgb(250, 246, 246);
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }
-  
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  .topnav a.active {
-    background-color: #2196F3;
-    color: white;
-  }
-  
-  .topnav input[type=text] {
-    float: right;
-    padding: 6px;
-    border: none;
-    margin-top: 8px;
-    margin-right: 16px;
-    font-size: 17px;
-  }
-  
+  overflow: hidden;
+  background-color: #8a9c36;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: rgb(250, 246, 246);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #2196f3;
+  color: white;
+}
+
+.topnav input[type="text"] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+
 #searchNav {
   background-color: lightgray;
   border-radius: 6px;
 }
 
-#searchNav button {
- /* background-color: rgb(78, 69, 128);
- /* color: white; */
-  border-radius: 6px; 
+.searchEl {
+  display: block;
+  padding: 2px;
+  align-items: center;
 }
 
-#searchNav button:hover {
- /* background-color: rgb(129, 115, 206); */
- /* color: white; */
+.searchEl button {
+  background-color: #fbeee0;
+  border: 1px solid #422800;
   border-radius: 6px;
+  box-shadow: #422800 2px 2px 0 0;
+  color: #422800;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+
 }
+
+.searchEl button:hover {
+  background-color: #fff;
+  box-shadow: #422800 4px 4px 0 0;
+}
+
+@media (min-width: 768px) {
+  .searchEl {
+    min-width: 120px;
+    padding: 0 25px;
+  }
 
 .dogAPIinfo {
   display: inline-block;
@@ -101,25 +120,31 @@ figcaption {
 
 .card {
   border-radius: 6px;
-  transition: all .2s ease-in-out; 
+  border-color: #422800;
+  transition: all 0.2s ease-in-out;
 }
 
-.card:hover { 
-  transform: scale(1.05); 
+.card:hover {
+  transform: scale(1.05);
   box-shadow: 2px 2px 10px grey;
 }
 
-  @media screen and (max-width: 600px) {
-    .topnav a, .topnav input[type=text] {
-      float: none;
-      display: block;
-      text-align: left;
-      width: 100%;
-      margin: 0;
-      padding: 14px;
-    }
-    .topnav input[type=text] {
-      border: 1px solid #ccc;
-    }
+footer {
+  background-color: #c7b6a3;
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a,
+  .topnav input[type="text"] {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
   }
-  
+  .topnav input[type="text"] {
+    border: 1px solid #ccc;
+  }
+}
