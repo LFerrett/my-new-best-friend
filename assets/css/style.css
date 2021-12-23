@@ -83,6 +83,12 @@ body, html {
   border-radius: 6px;
 }
 
+.searchEl {
+  display: block;
+  padding: 2px;
+  align-items: center;
+}
+
 .dogAPIinfo {
   display: inline-block;
   width: 90%;
