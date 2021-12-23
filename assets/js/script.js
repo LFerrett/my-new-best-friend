@@ -4,6 +4,7 @@ var theDogApiKey = "9af1f589-f293-4bba-8d9e-3ba9732efb0f";
 var breedTextBox = document.getElementById("breed")
 var zipCode = document.getElementById('zip');
 var distance = document.getElementById('distance');
+var savedDogs = document.getElementById('savedDogs');
 var selectedImage = document.getElementById('selectedImage');
 var selectedName = document.getElementById('selectedName');
 var selectedBreed = document.getElementById('selectedBreed');
@@ -18,6 +19,18 @@ var dogAge = document.getElementsByClassName('dogAge');
 var dogUrl = document.getElementsByClassName('dogUrl');
 var dogListing = document.getElementById('dogListing');
 var dogCard = document.getElementsByClassName('dogCard');
+var aboutDog = document.getElementById('aboutDog');
+var saveBtn = document.getElementById('saveBtn');
+var savedDogsStorage = localStorage.getItem('savedDogs');
+
+// On content load, puts the saved dogs list from local storage onto the html
+document.addEventListener('DOMContentLoaded', function () {
+  if (savedDogsStorage == null) {
+    console.log('No saved dogs');
+  } else {
+    savedDogs.innerHTML = savedDogsStorage;
+  }
+})
 
 // Function to call the Petfinder API
 function callPetFinder() {
@@ -129,12 +142,13 @@ function getBreedInfo(currentBreed, dogCardValues){
       return response.json()
     }).then(function(dataJson){
       console.log(dataJson)
+      console.log(currentBreed)
 
       // Get image, name, and breed from selected card
-      var imageEl = dogCardValues.children[0].textContent;
+      var imageEl = dogCardValues.children[0].src;
       var nameEl = dogCardValues.children[1].textContent;
       var breedEl = dogCardValues.children[2].textContent;
-      if(currentBreed == "Mixed+Breed") {
+      if(currentBreed == "Mixed Breed") {
         var temperamentEl = 'No temperament information available';
         var lifeSpanEl = 'No life span information available';
       } else {
@@ -147,7 +161,7 @@ function getBreedInfo(currentBreed, dogCardValues){
     //   urlEl = urlEl.replace('"', '');
       console.log(urlEl)
       selectedImage.src = imageEl;
-      selectedName.innerHTML = nameEl;
+      selectedName.innerHTML = nameEl.replace ('Name: ', '');
       selectedBreed.innerHTML = 'Breed: ' + breedEl;
       selectedTraits.innerHTML = 'Traits: ' + temperamentEl;
       selectedLifespan.innerHTML = 'Typical Life Span: ' + lifeSpanEl;
@@ -156,7 +170,7 @@ function getBreedInfo(currentBreed, dogCardValues){
 }
 
 
-// Test event listener and function for getting specific card info
+// Event listener and function for getting specific card info into the getBreedInfo function
 var individualCardClick = function(event) {
   var dogCardValues = event.currentTarget;
   console.log(dogCardValues.children[2].textContent);
@@ -166,3 +180,52 @@ var individualCardClick = function(event) {
   getBreedInfo(currentBreed, dogCardValues)
 };
 
+// Function to save dogs to to local storage
+function saveLocalStorage() {
+  var savedDogBtnEl = document.createElement('button');
+  var aboutDogContents = aboutDog.innerHTML;
+  var selectedNameValue = selectedName.innerHTML;
+  var dogCheck = document.getElementById(selectedNameValue);
+
+  // Checks if a dog was previously saved
+  if (dogCheck == null) {
+
+    // If the dog was not previously saved
+    // If there are less than 10 dogs in the list, adds the new dog
+    if (savedDogs.children.length < 10) {
+      savedDogs.prepend(savedDogBtnEl);
+      savedDogs.firstChild.innerHTML = selectedNameValue;
+      savedDogs.firstChild.id = selectedNameValue;
+      savedDogs.firstChild.setAttribute('onClick', 'reply_click(this.id)')
+    }
+
+    // If there are more than 10 dogs in the list, removes the last dog and adds the new dog
+    else {
+      savedDogs.removeChild(savedDogs.lastChild);
+      savedDogs.prepend(savedDogBtnEl);
+      savedDogs.firstChild.innerHTML = selectedNameValue;
+      savedDogs.firstChild.id = selectedNameValue;
+      savedDogs.firstChild.setAttribute('onClick', 'reply_click(this.id)')
+    }
+  }
+
+  // If the dog was previously saved, moves the existing button to the top of the list
+  else {
+    dogCheck.remove();
+    savedDogs.prepend(savedDogBtnEl);
+    savedDogs.firstChild.innerHTML = selectedNameValue;
+    savedDogs.firstChild.id = selectedNameValue;
+    savedDogs.firstChild.setAttribute('onClick', 'reply_click(this.id)')
+  }
+
+  // Sets local storage for the dog information saved and the saved dogs list
+  localStorage.setItem(selectedNameValue, aboutDogContents);
+  localStorage.setItem('savedDogs', savedDogs.innerHTML);
+}
+
+// Function to recall the dog information on click of any saved dogs
+function reply_click(clicked_id){
+  var recallId = document.getElementById(clicked_id);
+  var savedDogValue = recallId.innerHTML;
+  aboutDog.innerHTML =  localStorage.getItem(savedDogValue);
+}
