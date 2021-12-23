@@ -174,13 +174,30 @@ function saveLocalStorage() {
   var savedDogBtnEl = document.createElement('button');
   var aboutDogContents = aboutDog.innerHTML;
   var selectedNameValue = selectedName.innerHTML;
-  var checkDog = document.getElementById(selectedNameValue);
+  var dogCheck = document.getElementById(selectedNameValue);
 
-  savedDogs.prepend(savedDogBtnEl);
-  savedDogs.firstChild.innerHTML = selectedNameValue;
-  savedDogs.firstChild.id = selectedNameValue;
-  savedDogs.firstChild.setAttribute('onClick', 'reply_click(this.id)')
+  if (dogCheck == null) {
 
+    if (savedDogs.children.length < 10) {
+      savedDogs.prepend(savedDogBtnEl);
+      savedDogs.firstChild.innerHTML = selectedNameValue;
+      savedDogs.firstChild.id = selectedNameValue;
+      savedDogs.firstChild.setAttribute('onClick', 'reply_click(this.id)')
+    } else {
+      savedDogs.removeChild(savedDogs.lastChild);
+      savedDogs.prepend(savedDogBtnEl);
+      savedDogs.firstChild.innerHTML = selectedNameValue;
+      savedDogs.firstChild.id = selectedNameValue;
+      savedDogs.firstChild.setAttribute('onClick', 'reply_click(this.id)')
+    }
+
+  } else {
+    dogCheck.remove();
+    savedDogs.prepend(savedDogBtnEl);
+    savedDogs.firstChild.innerHTML = selectedNameValue;
+    savedDogs.firstChild.id = selectedNameValue;
+    savedDogs.firstChild.setAttribute('onClick', 'reply_click(this.id)')
+  }
 
   localStorage.setItem(selectedNameValue, aboutDogContents);
   localStorage.setItem('savedDogs', savedDogs.innerHTML);
