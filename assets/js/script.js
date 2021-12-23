@@ -108,7 +108,8 @@ function callPetFinder() {
 }
 
 function getBreedInfo(){
-  var Url = "https://api.thedogapi.com/v1/breeds/search?q=golden"
+  // Needs function to replace spaces in breed name with + symbols
+  var Url = "https://api.thedogapi.com/v1/breeds/search?q=golden+retriever"
     fetch(Url, {
       headers:{
         "x-api-key": theDogApiKey
@@ -118,7 +119,9 @@ function getBreedInfo(){
       return response.json()
     }).then(function(dataJson){
       console.log(dataJson)
-      // Get name and breed from selected card
+
+      // Get image, name, and breed from selected card
+      // var imageEl = ;
       // var nameEl = ;
       // var breedEl = ;
       var temperamentEl = dataJson[0].temperament
@@ -126,7 +129,12 @@ function getBreedInfo(){
       // Get url from the hidden element from selected card
       // var urlEl = ;
 
-
+      // selectedImage.src = imageEl;
+      // selectedName.innerHTML = nameEl;
+      // selectedBreed.innerHTML = 'Breed: ' + breedEl;
+      selectedTraits.innerHTML = 'Traits: ' + temperamentEl;
+      selectedLifespan.innerHTML = 'Typical Life SpanL ' + lifeSpanEl;
+      // selectedURL.href = urlEl;
     });
 }
 getBreedInfo()
