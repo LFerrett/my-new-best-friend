@@ -81,6 +81,7 @@ function callPetFinder() {
       // Adds new elements, classes, and values for dog card container, image, and name
       dogListing.appendChild(newDogCard);
       dogListing.children[i].setAttribute('class', 'card dogCard');
+      dogListing.children[i].setAttribute('onClick', 'individualCardClick');
       dogCard[i].appendChild(newCardImg);
       dogCard[i].children[0].setAttribute('class', 'section media dogImage');
       dogImage[i].src = dogImageOutput;
@@ -141,7 +142,7 @@ function getBreedInfo(){
 
 // Test event listener and function for getting specific card info
 var individualCardClick = function() {
-  var dogCardValues = this.innerHTML;
+  var dogCardValues = this;
   console.log(dogCardValues);
 };
 
