@@ -21,6 +21,16 @@ var dogListing = document.getElementById('dogListing');
 var dogCard = document.getElementsByClassName('dogCard');
 var aboutDog = document.getElementById('aboutDog');
 var saveBtn = document.getElementById('saveBtn');
+var savedDogsStorage = localStorage.getItem('savedDogs');
+
+// On content load, puts the saved dogs list from local storage onto the html
+document.addEventListener('DOMContentLoaded', function () {
+  if (savedDogsStorage == null) {
+    console.log('No saved dogs');
+  } else {
+    savedDogs.innerHTML = savedDogsStorage;
+  }
+})
 
 // Function to call the Petfinder API
 function callPetFinder() {
