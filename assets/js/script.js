@@ -108,9 +108,10 @@ function callPetFinder() {
   });
 }
 
-function getBreedInfo(){
+function getBreedInfo(currentBreed){
   // Needs function to replace spaces in breed name with + symbols
-  var Url = "https://api.thedogapi.com/v1/breeds/search?q=golden+retriever"
+  var text = document.querySelector(".dogBreed").innerHTML;
+  var Url = "https://api.thedogapi.com/v1/breeds/search?q=" + currentBreed
     fetch(Url, {
       headers:{
         "x-api-key": theDogApiKey
@@ -123,9 +124,15 @@ function getBreedInfo(){
 
       // Get image, name, and breed from selected card
       // var imageEl = ;
-      // var nameEl = ;
+    //   var nameEl = ;
       // var breedEl = ;
-      var temperamentEl = dataJson[0].temperament
+      var temperamentCheck = dataJson[0].temperament
+      if(temperamentCheck == null) {
+        var temperamentEl = 'No temperament information available';
+      } else {
+        var temperamentEl = dataJson[0].temperament;
+      }
+      
       var lifeSpanEl = dataJson[0].life_span
       // Get url from the hidden element from selected card
       // var urlEl = ;
@@ -143,6 +150,17 @@ function getBreedInfo(){
 // Test event listener and function for getting specific card info
 var individualCardClick = function(event) {
   var dogCardValues = event.currentTarget;
-  console.log(dogCardValues);
+  console.log(dogCardValues.children[2].textContent);
+  var currentBreed = dogCardValues.children[2].textContent
+  currentBreed = currentBreed.replace('Breed: ', '')
+  console.log(currentBreed)
+    // var imageEl = ;
+    // var nameEl = ;
+    // var breedEl = ;
+    // var urlEl = ;
+  getBreedInfo(currentBreed)
+    
+
+
 };
 
