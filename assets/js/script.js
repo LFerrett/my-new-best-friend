@@ -4,6 +4,12 @@ var theDogApiKey = "9af1f589-f293-4bba-8d9e-3ba9732efb0f";
 var breedTextBox = document.getElementById("breed")
 var zipCode = document.getElementById('zip');
 var distance = document.getElementById('distance');
+var selectedImage = document.getElementById('selectedImage');
+var selectedName = document.getElementById('selectedName');
+var selectedBreed = document.getElementById('selectedBreed');
+var selectedTraits = document.getElementById('selectedTraits');
+var selectedLifespan = document.getElementById('selectedLifespan');
+var selectedURL = document.getElementById('selectedURL');
 var dogImage = document.getElementsByClassName('dogImage');
 var dogName = document.getElementsByClassName('dogName');
 var dogBreed = document.getElementsByClassName('dogBreed');
@@ -102,7 +108,8 @@ function callPetFinder() {
 }
 
 function getBreedInfo(){
-  var Url = "https://api.thedogapi.com/v1/breeds/search?q=golden"
+  // Needs function to replace spaces in breed name with + symbols
+  var Url = "https://api.thedogapi.com/v1/breeds/search?q=golden+retriever"
     fetch(Url, {
       headers:{
         "x-api-key": theDogApiKey
@@ -112,11 +119,22 @@ function getBreedInfo(){
       return response.json()
     }).then(function(dataJson){
       console.log(dataJson)
-      var dogInfoEl = document.getElementById("dogInfo")
-      var temperamentEl = document.getElementById("temperament")
-      var breedGroupEl = document.getElementById("breedGroup")
-      var lifeSpanEl = document.getElementById("lifeSpan")
 
+      // Get image, name, and breed from selected card
+      // var imageEl = ;
+      // var nameEl = ;
+      // var breedEl = ;
+      var temperamentEl = dataJson[0].temperament
+      var lifeSpanEl = dataJson[0].life_span
+      // Get url from the hidden element from selected card
+      // var urlEl = ;
+
+      // selectedImage.src = imageEl;
+      // selectedName.innerHTML = nameEl;
+      // selectedBreed.innerHTML = 'Breed: ' + breedEl;
+      selectedTraits.innerHTML = 'Traits: ' + temperamentEl;
+      selectedLifespan.innerHTML = 'Typical Life SpanL ' + lifeSpanEl;
+      // selectedURL.href = urlEl;
     });
 }
 getBreedInfo()
