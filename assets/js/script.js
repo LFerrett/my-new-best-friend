@@ -156,7 +156,7 @@ var individualCardClick = function(event) {
   console.log(currentBreed)
     // var imageEl = ;
     // var nameEl = ;
-    // var breedEl = ;
+    // var breedEl =
     // var urlEl = ;
   getBreedInfo(currentBreed)
     
