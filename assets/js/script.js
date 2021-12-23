@@ -63,6 +63,7 @@ function callPetFinder() {
     // Log the pet data
     // Replace [0] with [i] once testing is done
     var dogImageOutput = petData.animals[0].primary_photo_cropped.full
+    console.log(dogImageOutput)
     var dogNameOutput = petData.animals[0].name
     var dogBreedOutput = petData.animals[0].breeds.primary
     var dogGenderOutput = petData.animals[0].gender
@@ -71,27 +72,31 @@ function callPetFinder() {
 
     // dogImage[0].setAttribute('src', dogImageOutput);
     // dogName[0].innerHTML = 'Name: ' + dogNameOutput;
-    dogBreed[0].innerHTML = 'Breed: ' + dogBreedOutput;
-    dogGender[0].innerHTML = 'Gender: ' + dogGenderOutput;
-    dogAge[0].innerHTML = 'Age: ' + dogAgeOutput;
-    dogUrl[0].innerHTML = dogUrlOutput;
-    console.log('pets', petData);
+    // dogBreed[0].innerHTML = 'Breed: ' + dogBreedOutput;
+    // dogGender[0].innerHTML = 'Gender: ' + dogGenderOutput;
+    // dogAge[0].innerHTML = 'Age: ' + dogAgeOutput;
+    // dogUrl[0].innerHTML = dogUrlOutput;
+    // console.log('pets', petData);
 
     // Test code for creation of new dog card in order from top to bottom
-    // After running test, organize code and create for loop, replace [0] with [i]
+    // After running test, organize code and create for loop, replace [0] with [i], do not replace bracket number for children except for the dogListing children
     var newDogCard = document.createElement('article');
     dogListing.appendChild(newDogCard);
     dogListing.children[0].setAttribute('class', 'card dogCard');
     var newCardImg = document.createElement('img');
     dogCard[0].appendChild(newCardImg);
-    dogCard[0].children['img'].setAttribute('class', 'section media dogImage');
-    dogCard[0].children['img'].setAttribute('src', dogImageOutput);
+    dogCard[0].children[0].setAttribute('class', 'section media dogImage');
+    dogImage[0].src = dogImageOutput;
     var newNameEl = document.createElement('h3');
     dogCard[0].appendChild(newNameEl);
-    dogCard[0].children['h3'].setAttribute('class', 'section double-padded dogName');
+    dogCard[0].children[1].setAttribute('class', 'section double-padded dogName');
     dogName[0].innerHTML = 'Name: ' + dogNameOutput;
 
-
+    // For loop for creating the 4 p elements, to be kept inside the general dog card for loop
+    for (var j = 0; j < 4; j++) {
+      var newPEl = document.createElement('p');
+      dogCard[0].appendChild(newPEl);
+    }
   });
 }
 
