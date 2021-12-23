@@ -119,7 +119,6 @@ function callPetFinder() {
 
 function getBreedInfo(currentBreed){
   // Needs function to replace spaces in breed name with + symbols
-  var text = document.querySelector(".dogBreed").innerHTML;
   var Url = "https://api.thedogapi.com/v1/breeds/search?q=" + currentBreed
     fetch(Url, {
       headers:{
@@ -135,15 +134,15 @@ function getBreedInfo(currentBreed){
       // var imageEl = ;
     //   var nameEl = ;
       // var breedEl = ;
-      var temperamentCheck = dataJson[0].temperament
-      if(temperamentCheck == null) {
+      if(currentBreed == "Mixed+Breed") {
         var temperamentEl = 'No temperament information available';
+        var lifeSpanEl = 'No life span information available';
       } else {
         var temperamentEl = dataJson[0].temperament;
+        var lifeSpanEl = dataJson[0].life_span;
       }
-      
-      var lifeSpanEl = dataJson[0].life_span
-      // Get url from the hidden element from selected card
+
+            // Get url from the hidden element from selected card
       // var urlEl = ;
 
       // selectedImage.src = imageEl;
@@ -168,7 +167,7 @@ var individualCardClick = function(event) {
     // var breedEl = ;
     // var urlEl = ;
   getBreedInfo(currentBreed)
-    
+
 
 
 };
