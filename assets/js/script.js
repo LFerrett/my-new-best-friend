@@ -117,7 +117,7 @@ function callPetFinder() {
   });
 }
 
-function getBreedInfo(currentBreed){
+function getBreedInfo(currentBreed, dogCardValues){
   // Needs function to replace spaces in breed name with + symbols
   var Url = "https://api.thedogapi.com/v1/breeds/search?q=" + currentBreed
     fetch(Url, {
@@ -162,13 +162,6 @@ var individualCardClick = function(event) {
   var currentBreed = dogCardValues.children[2].textContent
   currentBreed = currentBreed.replace('Breed: ', '')
   console.log(currentBreed)
-    // var imageEl = ;
-    // var nameEl = ;
-    // var breedEl = ;
-    // var urlEl = ;
-  getBreedInfo(currentBreed)
-
-
-
+  getBreedInfo(currentBreed, dogCardValues)
 };
 
