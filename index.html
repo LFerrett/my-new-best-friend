@@ -48,22 +48,27 @@
               <div class="savedDogs">Dog Buttons</div>
               </div>
         </div>
-        <div class="col-sm-11 col-md-10">
+        <div class="col-sm-10">
           <div class="row"><div>
             <div class="dogAPIinfo">
-            <img src="./assets/images/dogImagePlaceholder.jpg" class="section media">
-            <h3 class="section double-padded">Dog API Info - HIDDEN AT START</h3>
-            <p class="section double-padded">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <p class="section double-padded">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <p class="section double-padded">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <table>
+                <tr>
+                <td><img src="./assets/images/dogImagePlaceholder.jpg" class="section media" id="selectedImage"><figcaption id="selectedName">DOG NAME</figcaption></td>
+                <td><h3 class="section double-padded" id="selectedBreed">Yorkshire Terrier</h3></td>
+                <td><h3 class="section double-padded" id="selectedTraits">Traits: Bold, Independent, Confident, Intelligent, Courageous</h3></td>
+                <td><h3 class="section double-padded" id="selectedLifespan">Life Span: 12 - 16 years average</h3></td>
+                <td><h3 class="section double-padded"><a href="#" id="selectedURL">Click to get adoption info!</a></h3></td>
+              </tr>
+              </table>
           </div></div></div>
-          <div class="row">
-          <div class="card">
-            <img src="./assets/images/dogImagePlaceholder.jpg" class="section media" id="dogImage">
-            <h3 class="section double-padded" id="dogName">Dog Name</h3>
-            <p class="section single-padded" id="dogBreed">Breed</p>
-            <p class="section single-padded" id="dogGender">Gender</p>
-            <p class="section single-padded" id="dogAge">Age</p>
+          <div class="row" id="dogListing">
+          <!-- <div class="card dogCard">
+            <img src="./assets/images/dogImagePlaceholder.jpg" class="section media dogImage">
+            <h3 class="section double-padded dogName">Dog Name</h3>
+            <p class="section single-padded dogBreed">Breed</p>
+            <p class="section single-padded dogGender">Gender</p>
+            <p class="section single-padded dogAge">Age</p>
+            <p class="section single-padded dogUrl hidden">Petfinder page url</p>
           </div>
           <div class="card">
             <img src="https://placehold.it/800x600" class="section media">
@@ -89,7 +94,7 @@
             <img src="https://placehold.it/800x600" class="section media">
             <h3 class="section double-padded">Lorem ipsum</h3>
             <p class="section double-padded">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
+          </div> -->
         </div>
       </div>
 
