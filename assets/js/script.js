@@ -10,7 +10,8 @@ var dogBreed = document.getElementsByClassName('dogBreed');
 var dogGender = document.getElementsByClassName('dogGender');
 var dogAge = document.getElementsByClassName('dogAge');
 var dogUrl = document.getElementsByClassName('dogUrl');
-
+var dogListing = document.getElementById('dogListing');
+var dogCard = document.getElementsByClassName('dogCard');
 
 // Function to call the Petfinder API
 function callPetFinder() {
@@ -59,21 +60,44 @@ function callPetFinder() {
 
   }).then(function (petData) {
 
-    // Log the pet data
-    var dogImageOutput = petData.animals[0].primary_photo_cropped.full
-    var dogNameOutput = petData.animals[0].name
-    var dogBreedOutput = petData.animals[0].breeds.primary
-    var dogGenderOutput = petData.animals[0].gender
-    var dogAgeOutput = petData.animals[0].age
-    var dogUrlOutput = petData.animals[0].url
+    // For loop creates a new dog card for each dog (1 page is up to 20 dogs)
+    for (var i = 0; i < petData.animals.length; i++) {
+      var newDogCard = document.createElement('article');
+      var newCardImg = document.createElement('img');
+      var newNameEl = document.createElement('h3');
+      var dogImageOutput = petData.animals[i].primary_photo_cropped.full;
+      var dogNameOutput = petData.animals[i].name;
+      var dogBreedOutput = petData.animals[i].breeds.primary;
+      var dogGenderOutput = petData.animals[i].gender;
+      var dogAgeOutput = petData.animals[i].age;
+      var dogUrlOutput = petData.animals[i].url;
 
-    dogImage[0].setAttribute('src', dogImageOutput);
-    dogName[0].innerHTML = 'Name: ' + dogNameOutput;
-    dogBreed[0].innerHTML = 'Breed: ' + dogBreedOutput;
-    dogGender[0].innerHTML = 'Gender: ' + dogGenderOutput;
-    dogAge[0].innerHTML = 'Age: ' + dogAgeOutput;
-    dogUrl[0].innerHTML = dogUrlOutput;
-    console.log('pets', petData);
+      // Adds new elements, classes, and values for dog card container, image, and name
+      dogListing.appendChild(newDogCard);
+      dogListing.children[i].setAttribute('class', 'card dogCard');
+      dogCard[i].appendChild(newCardImg);
+      dogCard[i].children[0].setAttribute('class', 'section media dogImage');
+      dogImage[i].src = dogImageOutput;
+      dogCard[i].appendChild(newNameEl);
+      dogCard[i].children[1].setAttribute('class', 'section double-padded dogName');
+      dogName[i].innerHTML = 'Name: ' + dogNameOutput;
+
+      // Adds 4 new p elements
+      for (var j = 0; j < 4; j++) {
+        var newPEl = document.createElement('p');
+        dogCard[i].appendChild(newPEl);
+      }
+
+      // Sets class and value for the p tags
+      dogCard[i].children[2].setAttribute('class', 'section single-padded dogBreed')
+      dogBreed[i].innerHTML = 'Breed: ' + dogBreedOutput;
+      dogCard[i].children[3].setAttribute('class', 'section single-padded dogGender')
+      dogGender[i].innerHTML = 'Gender: ' + dogGenderOutput;
+      dogCard[i].children[4].setAttribute('class', 'section single-padded dogAge')
+      dogAge[i].innerHTML = 'Age: ' + dogAgeOutput;
+      dogCard[i].children[5].setAttribute('class', 'section single-padded dogUrl hidden')
+      dogUrl[i].innerHTML = dogUrlOutput;
+    }
   });
 }
 
