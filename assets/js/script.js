@@ -118,10 +118,14 @@ function getBreedInfo(){
       return response.json()
     }).then(function(dataJson){
       console.log(dataJson)
-      var dogInfoEl = document.getElementById("dogInfo")
-      var temperamentEl = document.getElementById("temperament")
-      var breedGroupEl = document.getElementById("breedGroup")
-      var lifeSpanEl = document.getElementById("lifeSpan")
+      // Get name and breed from selected card
+      // var nameEl = ;
+      // var breedEl = ;
+      var temperamentEl = dataJson[0].temperament
+      var lifeSpanEl = dataJson[0].life_span
+      // Get url from the hidden element from selected card
+      // var urlEl = ;
+
 
     });
 }
