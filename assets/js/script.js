@@ -5,6 +5,7 @@ var breedTextBox = document.getElementById("breed")
 var zipCode = document.getElementById('zip');
 var distance = document.getElementById('distance');
 var savedDogs = document.getElementById('savedDogs');
+var selectedDogInfo = document.getElementById('selectedDogInfo');
 var selectedImage = document.getElementById('selectedImage');
 var selectedName = document.getElementById('selectedName');
 var selectedBreed = document.getElementById('selectedBreed');
@@ -178,6 +179,7 @@ var individualCardClick = function(event) {
   currentBreed = currentBreed.replace('Breed: ', '')
   console.log(currentBreed)
   getBreedInfo(currentBreed, dogCardValues)
+  selectedDogInfo.classList.remove('hidden');
 };
 
 // Function to save dogs to to local storage
@@ -228,4 +230,5 @@ function reply_click(clicked_id){
   var recallId = document.getElementById(clicked_id);
   var savedDogValue = recallId.innerHTML;
   aboutDog.innerHTML =  localStorage.getItem(savedDogValue);
+  selectedDogInfo.classList.remove('hidden');
 }
