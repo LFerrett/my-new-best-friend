@@ -139,11 +139,8 @@ function getBreedInfo(currentBreed, dogCardValues){
         "x-api-key": theDogApiKey
       }
     }).then(function(response){
-    //   console.log(response.json());
       return response.json()
     }).then(function(dataJson){
-      console.log(dataJson)
-      console.log(currentBreed)
 
       // Get image, name, and breed from selected card
       var imageEl = dogCardValues.children[0].src;
@@ -157,10 +154,7 @@ function getBreedInfo(currentBreed, dogCardValues){
         var lifeSpanEl = dataJson[0].life_span;
       }
 
-            // Get url from the hidden element from selected card
       var urlEl = dogCardValues.children[5].innerHTML
-    //   urlEl = urlEl.replace('"', '');
-      console.log(urlEl)
       selectedImage.src = imageEl;
       selectedName.innerHTML = nameEl.replace ('Name: ', '');
       selectedBreed.innerHTML = 'Breed: ' + breedEl;
@@ -174,10 +168,8 @@ function getBreedInfo(currentBreed, dogCardValues){
 // Event listener and function for getting specific card info into the getBreedInfo function
 var individualCardClick = function(event) {
   var dogCardValues = event.currentTarget;
-  console.log(dogCardValues.children[2].textContent);
   var currentBreed = dogCardValues.children[2].textContent
   currentBreed = currentBreed.replace('Breed: ', '')
-  console.log(currentBreed)
   getBreedInfo(currentBreed, dogCardValues)
   selectedDogInfo.classList.remove('hidden');
 };
