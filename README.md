@@ -15,11 +15,15 @@ So that I can make a more educated decision when adopting a dog.
 https://lferrett.github.io/my-new-best-friend/
 
 ## Deployed web visual
-Visual of web page
+Visual shows what occurs when a search is made, when a dog is selected, when a dog is saved, and when a saved dog is selected.
+
+![Best Friend Visual](assets/images/web-visual.gif)
 
 ## Features
 * Search function by zip code and distance. (The 'any' option will default to 100 miles)
 * Clickable dog cards that will display more information on the dog's breed if available.
+* Saved button to save the current dog.
+* Saved dog history that will display the saved dog.
 
 ## License
 [![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-blue.svg)](./LICENSE)
