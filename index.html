@@ -1,68 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport” content=“width=device-width, initial-scale=1.0" />
-    <title>My New Best Friend</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"
-    />
-    <link rel="stylesheet" href="./assets/css/style.css"/>
-  </head>
-  <body>
-    <section class="hero-image">
-      <div>
-        <!-- <div class="hero-text"></div> -->
-        <!-- <link href="./assets/images/groupPuppies.jpeg" alt="placeholder" /> -->
-        <div class="hero-text">
-          <h1>My New Best Friend</h1>
-          <p>
-            A simple app to fetch your new best friend
-            <br>Search available breeds by location
-            <br>Click friend's image for more info on breed
-          </p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport” content=“width=device-width, initial-scale=1.0" />
+  <title>My New Best Friend</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+<body>
+  <section class="hero-image">
+    <div>
+      <!-- <div class="hero-text"></div> -->
+      <!-- <link href="./assets/images/groupPuppies.jpeg" alt="placeholder" /> -->
+      <div class="hero-text">
+        <h1>My New Best Friend</h1>
+        <p>
+          A simple app to fetch your new best friend
+          <br>Search available breeds by location
+          <br>Click friend's image for more info on breed
+        </p>
+      </div>
+    </div>
+  </section>
+  <br />
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="row searchEl">
+          <h2>Dog search:</h2>
+          <input type="text" id="zip" size="9" placeholder="Zip Code" />
+          <select id="distance" name="distance">
+            <option value="1">1 mile</option>
+            <option value="5">5 miles</option>
+            <option value="10">10 miles</option>
+            <option value="25">25 miles</option>
+            <option value="any">Any</option>
+          </select>
+          <button onclick="callPetFinder()">“Retrieve” friend</button>
+        </div>
+        <div class="row">
+          <h3>Saved Dogs</h3>
+          <br />
+          <div id="savedDogs"></div>
         </div>
       </div>
-    </section>
-    <br />
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-2">
-          <div class="row searchEl">
-            <h2>Dog search:</h2>
-            <input type="text" id="zip" size="9" placeholder="Zip Code" />
-            <select id="distance" name="distance">
-              <option value="1">1 mile</option>
-              <option value="5">5 miles</option>
-              <option value="10">10 miles</option>
-              <option value="25">25 miles</option>
-              <option value="any">Any</option>
-            </select>
-            <button onclick="callPetFinder()">“Retrieve” friend</button>
-            </div>
-            <div class="row">
-              <h3>Saved Dogs</h3>
-              <br/>
-              <div id="savedDogs"></div>
-              </div>
+      <div class="col-sm-10">
+        <div class="row savedToStorage dogAPIinfo hidden" id="selectedDogInfo">
+          <table id="aboutDog">
+            <tr>
+              <td>
+                <img src="./assets/images/dogImagePlaceholder.jpg" class="section media" id="selectedImage">
+                <figcaption id="selectedName">DOG NAME</figcaption>
+              </td>
+              <td>
+                <h4 id="selectedBreed">Yorkshire Terrier</h4>
+              </td>
+              <td>
+                <h4 id="selectedTraits">Traits: Bold, Independent, Confident, Intelligent, Courageous</h4>
+              </td>
+              <td>
+                <h4 id="selectedLifespan">Life Span: 12 - 16 years average</h4>
+              </td>
+              <td>
+                <h4><a href="#" id="selectedURL">Click to get adoption info!</a></h4>
+              </td>
+              <td>
+                <button onclick="saveLocalStorage()" id="saveBtn">Save dog<span class="icon-bookmark"></span></button>
+              </td>
+            </tr>
+          </table>
         </div>
-        <div class="col-sm-10">
-          <div class="row savedToStorage"><div>
-            <div class="dogAPIinfo">
-              <table id="aboutDog">
-                <tr>
-                <td><img src="./assets/images/dogImagePlaceholder.jpg" class="section media" id="selectedImage"><figcaption id="selectedName">DOG NAME</figcaption></td>
-                <td><h4 id="selectedBreed">Yorkshire Terrier</h4></td>
-                <td><h4 id="selectedTraits">Traits: Bold, Independent, Confident, Intelligent, Courageous</h4></td>
-                <td><h4 id="selectedLifespan">Life Span: 12 - 16 years average</h4></td>
-                <td><h4 ><a href="#" id="selectedURL">Click to get adoption info!</a></h4></td>
-                <td><button onclick="saveLocalStorage()" id="saveBtn">Save dog<span class="icon-bookmark"></span></button></td>
-              </tr>
-              </table>
-          </div></div></div>
-          <div class="row" id="dogListing">
+        <div class="row" id="dogListing">
           <!-- <div class="card dogCard">
             <img src="./assets/images/dogImagePlaceholder.jpg" class="section media dogImage">
             <h3 class="section double-padded dogName">Dog Name</h3>
@@ -98,14 +109,13 @@
           </div> -->
         </div>
       </div>
-
-  </div>
-  <footer>
-    <div class="col-sm col-lg-10 col-lg-offset-1">
-      <p>Copyright &copy; My New Best Friend 2021 | Built using blood, sweat, and <a href="https://chalarangelo.github.io/mini.css/">mini.css</a>
-      </p>
     </div>
-  </footer>
-  <script src="assets/js/script.js"></script>
+    <footer>
+      <div class="col-sm col-lg-10 col-lg-offset-1">
+        <p>Copyright &copy; My New Best Friend 2021 | Built using blood, sweat, and <a href="https://chalarangelo.github.io/mini.css/">mini.css</a></p>
+      </div>
+    </footer>
+    <script src="assets/js/script.js"></script>
 </body>
+
 </html>
