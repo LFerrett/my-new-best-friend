@@ -157,7 +157,7 @@ function getBreedInfo(currentBreed, dogCardValues){
       var urlEl = dogCardValues.children[5].innerHTML
       selectedImage.src = imageEl;
       selectedName.innerHTML = nameEl.replace ('Name: ', '');
-      selectedBreed.innerHTML = 'Breed: ' + breedEl;
+      selectedBreed.innerHTML =  breedEl;
       selectedTraits.innerHTML = 'Traits: ' + temperamentEl;
       selectedLifespan.innerHTML = 'Typical Life Span: ' + lifeSpanEl;
       selectedURL.href = urlEl;
